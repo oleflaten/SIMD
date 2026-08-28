@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.16)
 
-project(DoDOOP LANGUAGES CXX)
+project(SIMD LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -15,13 +15,13 @@ elseif(CMAKE_CXX_COMPILER_ID MATCHES "Clang|AppleClang")
 elseif(MSVC)
     # MSVC (Visual Studio) flags
     # add_compile_options(/Qvec-report:1) #  Level 1 prints ONLY successfully vectorized loops (e.g., line 76)
-    add_compile_options(/Qvec-report:2) #  Level 2 prints ALL loops, including those that were not vectorized (e.g., line 90)
+    add_compile_options(/Qvec-report:1) #  Level 2 prints ALL loops, including those that were not vectorized (e.g., line 90)
 endif()
 
-add_executable(DoDOOP main.cpp)
+add_executable(SIMD main.cpp)
 
 include(GNUInstallDirs)
-install(TARGETS DoDOOP
+install(TARGETS SIMD
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
 )
